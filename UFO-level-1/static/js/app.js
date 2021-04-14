@@ -1,11 +1,16 @@
 // from data.js
 var tableData = data;
 
+// select table body
 let tbody = d3.select("tbody");
 
-function filterUFO(data){
+// select the form
+var form = d3.select("#form");
 
-    tbody.html("");
+// define function to populate table with filtered data
+function populateTable(data){
+
+    // tbody.html("");
 
     data.forEach((sighting) => {
 
@@ -18,8 +23,10 @@ function filterUFO(data){
     })
 }
 
+// define function to filter data upon click and paths to variables
 function handleClick(){
     d3.event.preventDefault();
+    
 
     let date = d3.select("#datetime").property("value");
     let city = d3.select("#city").property("value");
@@ -43,14 +50,20 @@ function handleClick(){
     if(shape) {
         filterData = filterData.filter((row) => row.shape === shape);
     }
-    filterUFO(filterData);
+    populateTable(filterData);
 }
 
+// execute filter on button click
 d3.selectAll("#filter-btn").on('click', handleClick);
 
-filterUFO(tableData);
+// execute filter on enter
+// d3.selectAll("#form").on('keydown', handleClick);
 
 
+
+populateTable(tableData);
+
+ 
 
 // // from data.js
 // var tableData = data;
