@@ -2,22 +2,22 @@
 var tableData = data;
 
 // select table body
-let tbody = d3.select("tbody");
+var tbody = d3.select("tbody");
 
 // select the form
 var form = d3.select("#form");
 
 // define function to populate table with filtered data
 function populateTable(data){
-
-    // tbody.html("");
+    
+    tbody.html("");
 
     data.forEach((sighting) => {
 
-        let row = tbody.append("tr");
+        var row = tbody.append("tr");
                
         Object.values(sighting).forEach((val) => {
-           let cell = row.append("td");
+           var cell = row.append("td");
            cell.text(val);
        });
     })
@@ -28,12 +28,12 @@ function handleClick(){
     d3.event.preventDefault();
     
 
-    let date = d3.select("#datetime").property("value");
-    let city = d3.select("#city").property("value");
-    let state = d3.select("#state").property("value");
-    let country = d3.select("#country").property("value");
-    let shape = d3.select("#shape").property("value");
-    let filterData = tableData;
+    var date = d3.select("#datetime").property("value");
+    var city = d3.select("#city").property("value");
+    var state = d3.select("#state").property("value");
+    var country = d3.select("#country").property("value");
+    var shape = d3.select("#shape").property("value");
+    var filterData = tableData;
 
     if(date) {
         filterData = filterData.filter((row) => row.datetime === date);
@@ -56,16 +56,81 @@ function handleClick(){
 // execute filter on button click
 d3.selectAll("#filter-btn").on('click', handleClick);
 
-// execute filter on enter
+// // execute filter on enter
 // d3.selectAll("#form").on('keydown', handleClick);
 
 
 
-populateTable(tableData);
-
- 
+// populateTable(tableData);
 
 // // from data.js
+// var tableData = data;
+
+// // select table body
+// var tbody = d3.select("tbody");
+
+// // select the form
+// var form = d3.select("#form");
+
+// // define function to populate table with filtered data
+// function populateTable(data){
+
+//     tbody.html("");
+
+//     data.forEach((sighting) => {
+
+//         let row = tbody.append("tr");
+               
+//         Object.values(sighting).forEach((val) => {
+//            let cell = row.append("td");
+//            cell.text(val);
+//        });
+//     })
+// }
+
+// // define function to filter data upon click and paths to variables
+// function handleClick(){
+//     d3.event.preventDefault();
+    
+
+//     let date = d3.select("#datetime").property("value");
+//     let city = d3.select("#city").property("value");
+//     let state = d3.select("#state").property("value");
+//     let country = d3.select("#country").property("value");
+//     let shape = d3.select("#shape").property("value");
+//     let filterData = tableData;
+
+//     if(date) {
+//         filterData = filterData.filter((row) => row.datetime === date);
+//     }
+//     if(city) {
+//         filterData = filterData.filter((row) => row.city === city);
+//     }
+//     if(state) {
+//         filterData = filterData.filter((row) => row.state === state);
+//     }
+//     if(country) {
+//         filterData = filterData.filter((row) => row.country === country);
+//     }
+//     if(shape) {
+//         filterData = filterData.filter((row) => row.shape === shape);
+//     }
+//     populateTable(filterData);
+// }
+
+// // execute filter on button click
+// d3.selectAll("#filter-btn").on('click', handleClick);
+
+// // execute filter on enter
+// // d3.selectAll("#form").on('keydown', handleClick);
+
+
+
+// populateTable(tableData);
+
+
+
+// // // from data.js
 // var tableData = data;
 
 // // select table
